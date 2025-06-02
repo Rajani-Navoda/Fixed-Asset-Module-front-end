@@ -1,1 +1,215 @@
-<p>new-fix-asset works!</p>
+<div class="container-fluid px-4 py-4">
+  <div class="d-flex justify-content-between align-items-center mb-3 px-4 py-3 bg-secondary text-white rounded">
+  <h3 class="mb-0">New Fixed Asset</h3>
+  <button type="button" class="close text-white" aria-label="Close" style="opacity: 1;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+  <form [formGroup]="assetForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+    <div class="bg-light p-4 rounded mb-4">
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">Fixed Asset Name</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="name" />
+        </div>
+      </div>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">Fixed Asset Number</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="assetNumber" readonly />
+        </div>
+      </div>
+    </div>
+    
+    <hr class="mt-4 mb-4"/>
+
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Purchase Value</label>
+      <div class="col-sm-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">LKR</span>
+          </div>
+          <input type="number" class="form-control" formControlName="purchaseValue" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Purchase Date</label>
+      <div class="col-sm-8">
+        <input type="date" class="form-control" formControlName="purchaseDate" />
+      </div>
+    </div>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Serial Number</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" formControlName="serialNumber" />
+      </div>
+    </div>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Warranty Expiration Date</label>
+      <div class="col-sm-8">
+        <input type="date" class="form-control" formControlName="warrantyExpiration" placeholder="dd.MM.yyyy" />
+      </div>
+    </div>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Current Value</label>
+      <div class="col-sm-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">LKR</span>
+          </div>
+          <input type="number" class="form-control" formControlName="currentValue" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Disposal Value </label>
+      <div class="col-sm-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">LKR</span>
+          </div>
+          <input type="number" class="form-control" formControlName="disposalValue" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Fixed Asset Type</label>
+      <div class="col-sm-8">
+        <select class="form-control" formControlName="assetType">
+          <option value="">Select...</option>
+          <option *ngFor="let type of assetTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row align-items-center mb-3">
+      <label class="col-sm-4 col-form-label">Description</label>
+      <div class="col-sm-8">
+        <textarea class="form-control" formControlName="description" rows="2"></textarea>
+      </div>
+    </div>
+
+    <hr class="mt-4 mb-4"/>
+
+    <!-- Depreciation Details Section -->
+    <div class="mb-4">
+      <h5 class="mb-3">Depreciation Details</h5>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Depreciation Method*
+          <span tabindex="0" data-toggle="tooltip" title="Select the depreciation method.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="depreciationMethod">
+            <option value="">Select...</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Computation Type*
+          <span tabindex="0" data-toggle="tooltip" title="Choose the computation type.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="computationType">
+            <option value="">Select...</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Depreciation Frequency*
+          <span tabindex="0" data-toggle="tooltip" title="Select frequency.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="depreciationFrequency">
+            <option value="">Select...</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Depreciation Start Date
+          <span tabindex="0" data-toggle="tooltip" title="Date when depreciation starts.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <input type="date" class="form-control" formControlName="depreciationStartDate" />
+        </div>
+      </div>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Asset Life*
+          <span tabindex="0" data-toggle="tooltip" title="Enter the asset life in terms of months.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" formControlName="assetLife" placeholder="Enter the asset life in terms of months" />
+        </div>
+      </div>
+    </div>
+
+    <hr class="mt-4 mb-4"/>
+
+    <!-- Account Details Section -->
+    <div class="mb-4">
+      <h5 class="mb-3">Account Details</h5>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Fixed Asset Account*
+          <span tabindex="0" data-toggle="tooltip" title="Select the fixed asset account.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="fixedAssetAccount">
+            <option value="">Select...</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Accumulated Depreciation Account*
+          <span tabindex="0" data-toggle="tooltip" title="Select the accumulated depreciation account.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="accumulatedDepreciationAccount">
+            <option value="">Select...</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row align-items-center mb-3">
+        <label class="col-sm-4 col-form-label">
+          Depreciation Expense Account*
+          <span tabindex="0" data-toggle="tooltip" title="Select the depreciation expense account.">
+            <i class="fa fa-info-circle text-muted"></i>
+          </span>
+        </label>
+        <div class="col-sm-8">
+          <select class="form-control" formControlName="depreciationExpenseAccount">
+            <option value="">Select...</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-8 offset-sm-4">
+        <button type="submit" class="btn btn-primary w-100" [disabled]="assetForm.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
