@@ -1,0 +1,105 @@
+<!-- <h2 mat-dialog-title>Configure Fixed Asset Number Preferences</h2>
+<mat-dialog-content>
+  <div class="mb-3">
+    <div><strong>Associated Series</strong></div>
+    <div>Default Transaction Series</div>
+  </div>
+  <p class="mb-3">
+    Auto-generating fixed asset numbers can save your time. Would you like to change your current setting?
+  </p>
+  <mat-radio-group [(ngModel)]="autoGenerate" class="mb-3" (change)="onModeChange()">
+    <mat-radio-button [value]="true">
+      Auto-generate fixed asset numbers
+      <mat-icon matTooltip="Automatically generate numbers">info</mat-icon>
+    </mat-radio-button>
+    <div *ngIf="autoGenerate" class="d-flex align-items-center mt-2">
+      <mat-form-field appearance="outline" class="mr-2" style="width: 100px;">
+        <mat-label>Prefix</mat-label>
+        <input matInput [(ngModel)]="prefix">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 120px;">
+        <mat-label>Next Number</mat-label>
+        <input matInput [(ngModel)]="nextNumber">
+      </mat-form-field>
+    </div>
+    <mat-radio-button [value]="false" class="mt-2">
+      Add fixed asset number manually for this fixed asset
+    </mat-radio-button>
+  </mat-radio-group>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>
+ -->
+
+
+ <!-- asset-number-preferences-dialog.component.html -->
+<div class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0,0,0,0.3);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+        <h2 class="modal-title">Configure Fixed Asset Number Preferences</h2>
+      </div>
+
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="mb-3">
+          <div><strong>Associated Series</strong></div>
+          <div>Default Transaction Series</div>
+        </div>
+        <hr>
+        <div class="mb-3">
+          <p>
+            Auto-generating fixed asset numbers can save your time. Would you like to change your current setting?
+          </p>
+        </div>
+        <form>
+          <div class="form-check mb-2">
+            <input class="form-check-input"
+                   type="radio"
+                   name="assetNumberMode"
+                   id="autoGenerateRadio"
+                   [checked]="autoGenerate"
+                   (change)="setAutoGenerate(true)">
+            <label class="form-check-label font-weight-bold" for="autoGenerateRadio">
+              Auto-generate fixed asset numbers
+              <span tabindex="0" data-toggle="tooltip" title="Automatically generate numbers">
+                <i class="fa fa-info-circle text-muted"></i>
+              </span>
+            </label>
+          </div>
+          <div class="form-row mb-3 ml-4" *ngIf="autoGenerate">
+            <div class="col">
+              <label for="prefixInput" class="small">Prefix</label>
+              <input type="text" class="form-control" id="prefixInput" [(ngModel)]="prefix" name="prefix">
+            </div>
+            <div class="col">
+              <label for="nextNumberInput" class="small">Next Number</label>
+              <input type="text" class="form-control" id="nextNumberInput" [(ngModel)]="nextNumber" name="nextNumber">
+            </div>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input"
+                   type="radio"
+                   name="assetNumberMode"
+                   id="manualRadio"
+                   [checked]="!autoGenerate"
+                   (change)="setAutoGenerate(false)">
+            <label class="form-check-label" for="manualRadio">
+              Add fixed asset number manually for this fixed asset
+            </label>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
