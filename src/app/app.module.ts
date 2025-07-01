@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
+import { AssetTypesComponent } from './asset-types/asset-types.component';
+import { AddNewAssetTypeComponent } from './add-new-asset-type/add-new-asset-type.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { MatRadioModule } from '@angular/material/radio';
     AllFixedAssetsComponent,
     NewFixAssetComponent,
     FixedAssetTypesComponent,
-    AssetNumberPreferencesDialogComponent
+    AssetNumberPreferencesDialogComponent,
+    AssetTypesComponent,
+    AddNewAssetTypeComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
