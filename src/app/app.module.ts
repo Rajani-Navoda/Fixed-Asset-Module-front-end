@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AssetTypesComponent } from './asset-types/asset-types.component';
 import { AddNewAssetTypeComponent } from './add-new-asset-type/add-new-asset-type.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CreateAccountComponent } from './create-account/create-account.componen
     MatDialogModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

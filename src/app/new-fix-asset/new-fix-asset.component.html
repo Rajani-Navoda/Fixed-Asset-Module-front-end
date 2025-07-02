@@ -6,29 +6,25 @@
   </button>
 </div>
 
-  <form [formGroup]="assetForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+
+  <form #addFixedAsset="ngForm" (ngSubmit)="onSubmit(addFixedAsset)" class="form-horizontal">
 
     <div class="bg-light p-4 rounded mb-4">
       <div class="form-group row align-items-center mb-3">
         <label class="col-sm-4 col-form-label">Fixed Asset Name</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" formControlName="name" />
+          <input type="text" class="form-control" name="assetName" ngModel/>
         </div>
       </div>
-      <!-- <div class="form-group row align-items-center mb-3">
-        <label class="col-sm-4 col-form-label">Fixed Asset Number</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" formControlName="assetNumber" readonly />
-        </div>
-      </div> -->
 
       <div class="form-group row align-items-center mb-3">
         <label class="col-sm-4 col-form-label">Fixed Asset number</label>
         <div class="col-sm-8 d-flex align-items-center">
           <input type="text" class="form-control" [value]="fixedAssetNumber" readonly style="width: auto; flex: 1;">
-          <button mat-icon-button type="button" (click)="openAssetNumberPreferences()" style="margin-left: 8px;">
+          <!-- <button mat-icon-button type="button" (click)="openAssetNumberPreferences()" style="margin-left: 8px;">
             <mat-icon>settings</mat-icon>
-          </button>
+          </button> -->
         </div>
       </div>
 
@@ -175,10 +171,10 @@
 
     <!-- Account Details Section -->
     <div class="mb-4">
-      <h5 class="mb-3">Account Details</h5>
+      <h2 class="mb-3">Account Details</h2>
       <div class="form-group row align-items-center mb-3">
         <label class="col-sm-4 col-form-label">
-          Fixed Asset Account*
+          Fixed Asset Account
           <span tabindex="0" data-toggle="tooltip" title="Select the fixed asset account.">
             <i class="fa fa-info-circle text-muted"></i>
           </span>
@@ -186,12 +182,15 @@
         <div class="col-sm-8">
           <select class="form-control" formControlName="fixedAssetAccount">
             <option value="">Select...</option>
+             <option *ngFor="let account of fixedAssetAccounts" [value]="account.id">
+                {{ account.name }}
+              </option>
           </select>
         </div>
       </div>
       <div class="form-group row align-items-center mb-3">
         <label class="col-sm-4 col-form-label">
-          Accumulated Depreciation Account*
+          Accumulated Depreciation Account
           <span tabindex="0" data-toggle="tooltip" title="Select the accumulated depreciation account.">
             <i class="fa fa-info-circle text-muted"></i>
           </span>
@@ -199,12 +198,15 @@
         <div class="col-sm-8">
           <select class="form-control" formControlName="accumulatedDepreciationAccount">
             <option value="">Select...</option>
+              <option *ngFor="let account of fixedAssetAccounts" [value]="account.id">
+                {{ account.name }}
+              </option>
           </select>
         </div>
       </div>
       <div class="form-group row align-items-center mb-3">
         <label class="col-sm-4 col-form-label">
-          Depreciation Expense Account*
+          Depreciation Expense Account
           <span tabindex="0" data-toggle="tooltip" title="Select the depreciation expense account.">
             <i class="fa fa-info-circle text-muted"></i>
           </span>
@@ -212,6 +214,9 @@
         <div class="col-sm-8">
           <select class="form-control" formControlName="depreciationExpenseAccount">
             <option value="">Select...</option>
+              <option *ngFor="let account of depreciationExpenseAccounts" [value]="account.id">
+                {{ account.name }}
+              </option>
           </select>
         </div>
       </div>
@@ -219,7 +224,7 @@
 
     <div class="form-group row">
       <div class="col-sm-8 offset-sm-4">
-        <button type="submit" class="btn btn-primary w-100" [disabled]="assetForm.invalid">Submit</button>
+        <button type="submit" class="btn btn-primary w-100" >Submit</button>
       </div>
     </div>
   </form>
