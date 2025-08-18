@@ -1,0 +1,31 @@
+<div class="d-flex align-items-center justify-content-between px-4 py-3 bg-light border-bottom">
+  <div class="d-flex align-items-center gap-4">
+    <span class="fw-bold" style="font-size: 1.25rem;">Draft Assets</span>
+    <a 
+      class="text-secondary text-decoration-none" 
+      [routerLink]="'/asset-register'"
+      >Asset Register</a>
+  </div>
+  <div class="d-flex align-items-center gap-4">
+    <!-- <a 
+      class="text-secondary text-decoration-none" 
+      [routerLink]="'/create-account'"
+      >Create Account</a> -->
+      <!-- <a 
+      class="text-secondary text-decoration-none" 
+      href="#" 
+      (click)="openCreateAccountModal($event)"
+    >Create Account</a> -->
+    <a href="#" class="text-secondary text-decoration-none" 
+    (click)="openCreateAccountModal($event)">
+        Create Account
+    </a>
+    
+    <a 
+      class="text-primary text-decoration-none"
+      [routerLink]="'all-asset-types'"
+      >Manage Asset Types</a>
+    <button class="btn btn-primary" [routerLink]="['/new-fixed-asset']">+ New</button>
+  </div>
+    
+</div>

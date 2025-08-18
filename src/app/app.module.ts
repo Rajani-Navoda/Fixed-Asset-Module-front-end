@@ -17,6 +17,8 @@ import { AssetTypesComponent } from './asset-types/asset-types.component';
 import { AddNewAssetTypeComponent } from './add-new-asset-type/add-new-asset-type.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     AssetNumberPreferencesDialogComponent,
     AssetTypesComponent,
     AddNewAssetTypeComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatIconModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

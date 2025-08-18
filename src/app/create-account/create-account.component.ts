@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountsService } from '../_services/accounts.service';
-import { AllAccounts } from '../_models/Accounts';
+import { Accounts } from '../_models/Accounts';
+import { NgForm } from '@angular/forms';
+import { AccountType } from '../_models/enums/AccountType';
 
 @Component({
   selector: 'app-create-account',
@@ -11,16 +13,30 @@ export class CreateAccountComponent implements OnInit {
 
   constructor( private accountService:AccountsService) { }
 
-  ngOnInit(): void {
+  accountTypeOptions: { label: string; value: AccountType }[] = [];
 
-    this.accountService.getAllAccounts().subscribe({
-      next: (data: AllAccounts[]) => {
-        console.log("Accounts loaded successfully", data);
-      },
-      error: (err) => {
-        console.error("Error loading Accounts.", err);
-      }
-    });
+  ngOnInit(): void {
+    
+      this.accountTypeOptions = Object.values(AccountType).map(type => ({
+      label: this.formatLabel(type),
+      value: type,
+    }));
+
+  }
+
+
+  formatLabel(value: string): string {
+    return value
+      .toLowerCase()
+      .replace(/_/g, ' ')
+      .replace(/\b\w/g, char => char.toUpperCase());
+  }
+
+
+  CreateAccount(CreateAccountForm:NgForm){
+    const account:Accounts = CreateAccountForm.value;
+    console.log(account);
+
   }
 
 }

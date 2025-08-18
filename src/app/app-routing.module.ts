@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NewFixAssetComponent } from './new-fix-asset/new-fix-asset.component';
-import { AllFixedAssetsComponent } from './all-fixed-assets/all-fixed-assets.component';
+import { AssetTypesComponent } from './asset-types/asset-types.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 const routes: Routes = [
-  {path:'', component:AllFixedAssetsComponent},
+
+  // {path:'', component:NavBarComponent},
   {path:'new-fixed-asset', component:NewFixAssetComponent},
+  {path:'all-asset-types', component:AssetTypesComponent},
+  {path:'create-account', component:CreateAccountComponent}
 
 ];
 
@@ -13,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

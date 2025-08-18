@@ -1,1 +1,108 @@
-<p>create-account works!</p>
+<!-- Modal Trigger Button -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAccountModal">
+  Create Account
+</button> -->
+
+<!-- Create Account Modal -->
+<div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg"> <!-- modal-lg for a wider modal similar to screenshot -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createAccountModalLabel">Create Account</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form #CreateAccountForm="ngForm" (ngSubmit)="CreateAccount(CreateAccountForm)">
+        <div class="modal-body">
+          <div class="row mb-3">
+            <!-- Account Type -->
+
+            <div class="col-md-6 mb-3">
+              <label for="accountType" class="form-label">Account Type<span class="text-danger">*</span></label>
+              <select
+                id="accountType"
+                name="accountType"
+                class="form-select"
+                ngModel
+                required
+              >
+                <option *ngFor="let accountTypeO of accountTypeOptions" [ngValue]="accountTypeO.value">
+                  {{ accountTypeO.label }}
+                </option>
+              </select>
+            </div>
+
+
+            <!-- Account Name -->
+            <div class="col-md-6 mb-3">
+              <label for="accountName" class="form-label">Account Name<span class="text-danger">*</span></label>
+              <input
+                type="text"
+                id="accountName"
+                name="accountName"
+                class="form-control"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <!-- Sub account checkbox -->
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="isSubAccount" name="isSubAccount" ngModel>
+            <label class="form-check-label" for="isSubAccount">Make this a sub-account</label>
+          </div>
+
+           <!-- Parent Account -->
+            <div class="col-md-6 mb-3">
+              <label for="parentAccount" class="form-label">Parent Account</label>
+              <input
+                type="text"
+                id="parentAccount"
+                name="parentAccount"
+                class="form-control"
+                ngModel
+              />
+            </div>
+          <div class="row">
+
+            <!-- Account Code -->
+            <div class="col-md-6 mb-3">
+              <label for="accountCode" class="form-label">Account Code</label>
+              <input
+                type="text"
+                id="accountCode"
+                name="accountCode"
+                class="form-control"
+                ngModel
+              />
+            </div>
+            
+          </div>
+          <!-- Description Field -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              class="form-control"
+              maxlength="500"
+              rows="3"
+              ngModel
+            ></textarea>
+          </div>
+          <!-- Zoho Expense Checkbox -->
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="isZohoExpense" name="isZohoExpense" ngModel>
+            <label class="form-check-label" for="isZohoExpense">
+              Show as an active account in Zoho Expense
+            </label>
+          </div>
+        </div>
+        <!-- Modal Footer with Actions -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="CreateAccountForm.invalid">Save and Select</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

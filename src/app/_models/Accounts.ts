@@ -1,6 +1,7 @@
 import { AccountType } from "./enums/AccountType";
 
- export interface AllAccounts {
+ export interface Accounts{
+
     accountCode: string;
     accountName: string;    
     accountType: AccountType;

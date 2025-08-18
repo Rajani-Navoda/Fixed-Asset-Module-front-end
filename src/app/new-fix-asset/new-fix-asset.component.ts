@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { AllAccounts } from '../_models/Accounts';
+import { Accounts } from '../_models/Accounts';
 import { AccountsService } from '../_services/accounts.service';
 import { AccountType } from '../_models/enums/AccountType';
 import { HttpClient } from '@angular/common/http';
@@ -16,8 +16,8 @@ import { NgForm } from '@angular/forms';
 })
 export class NewFixAssetComponent implements OnInit {
 
-  fixedAssetAccounts: AllAccounts[] = [];
-  depreciationExpenseAccounts: AllAccounts[] = [];
+  fixedAssetAccounts: Accounts[] = [];
+  depreciationExpenseAccounts: Accounts[] = [];
 
 
 // previous edit before
@@ -28,7 +28,7 @@ export class NewFixAssetComponent implements OnInit {
 
     ngOnInit(): void {
     this.accountService.getAllAccounts().subscribe({
-      next: (accounts: AllAccounts[]) => {
+      next: (accounts: Accounts[]) => {
         this.fixedAssetAccounts = accounts.filter(a => a.accountType === AccountType.FIXED_ASSET);
         this.depreciationExpenseAccounts = accounts.filter(a => a.accountType === AccountType.EXPENSE);
         console.log('Accounts loaded successfully', this.fixedAssetAccounts, this.depreciationExpenseAccounts);
@@ -41,8 +41,7 @@ export class NewFixAssetComponent implements OnInit {
 
 
   onSubmit(addFixedAsset: NgForm) {
-
-    
+   
   }
 
 
