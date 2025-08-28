@@ -15,12 +15,18 @@ export class CreateAccountComponent implements OnInit {
 
   accountTypeOptions: { label: string; value: AccountType }[] = [];
 
+  showSuccessAlert = false;
+  alertClass = 'alert-success';
+
+
   ngOnInit(): void {
     
       this.accountTypeOptions = Object.values(AccountType).map(type => ({
       label: this.formatLabel(type),
       value: type,
     }));
+
+    
 
   }
 
@@ -37,6 +43,26 @@ export class CreateAccountComponent implements OnInit {
     const account:Accounts = CreateAccountForm.value;
     console.log(account);
 
+    this.accountService.createAccount(account).subscribe({
+      next: (response) => {
+        console.log('Account created successfully:', response);
+
+        this.alertClass = 'alert-success';
+        this.showSuccessAlert = true;
+
+        setTimeout(() => {
+ 
+        }, 3000);
+      },
+      error: (error) => {
+        console.error('Error creating account:', error);
+      }
+    });
+
+  }
+
+    closeAlert() {
+    this.showSuccessAlert = false;
   }
 
 }

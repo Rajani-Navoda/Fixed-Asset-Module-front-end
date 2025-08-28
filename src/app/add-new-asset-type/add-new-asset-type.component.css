@@ -1,0 +1,4 @@
+#createAssetTypeModal .form-label {
+  font-size: 0.85rem; /* smaller font size */
+  font-weight: 100;   /* optional: reduce weight for subtle effect */
+}

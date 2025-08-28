@@ -1,0 +1,118 @@
+<!-- Fixed Asset Type Modal -->
+<div class="modal fade" id="createAssetTypeModal" tabindex="-1" aria-labelledby="createAssetTypeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h3 class="modal-title" id="createAssetTypeModalLabel">New Fixed Asset Type</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <form #assetTypeForm="ngForm" (ngSubmit)="onSaveAssetType(assetTypeForm)">
+        <div class="modal-body">
+          
+          <!-- Asset Type Name -->
+          <div class="mb-3">
+            <label class="form-label">Fixed Asset Type Name</label>
+            <input type="text"
+                   name="faTypeName"
+                   class="form-control"
+                   ngModel
+                   required>
+          </div>
+
+          <br>
+
+          <strong>Depreciation Details</strong>
+          <br> <br>
+          
+          <!-- Depreciation Method -->
+          <div class="mb-3">
+            <label class="form-label">Depreciation Method</label>
+            <select name="depreciationMethod" class="form-select" ngModel required>
+              <option value="" disabled selected>Select method</option>
+              <!-- <option *ngFor="let method of depreciationMethods" [value]="method">{{ method }}</option> -->
+                <option *ngFor="let method of depreciationMethods" [value]="method">
+                   {{ depreciationMethodLabels ? depreciationMethodLabels[method] : method }}
+                </option>
+            </select>
+          </div>
+          
+          <!-- Depreciation Frequency -->
+          <div class="mb-3">
+            <label class="form-label">Depreciation Frequency</label>
+            <select name="depreciationFrequency" class="form-select" ngModel required>
+              <option value="" disabled selected>Select frequency</option>
+              <option *ngFor="let freq of depreciationFrequencies" [value]="freq">{{ freq }}</option>
+            </select>
+          </div>
+          
+          <!-- Asset Life and Unit -->
+          <div class="mb-3">
+
+              <label class="form-label">Asset Life (in Months)</label>
+              <input type="number"
+                     min="1"
+                     name="assetLife"
+                     class="form-control"
+                     ngModel
+                     required>
+
+            <!-- <div class="col-4 mb-3">
+              <label class="form-label">&nbsp;</label>
+              <select name="assetLifeUnit" class="form-select" ngModel>
+                <option value="Months">Months</option>
+                <option value="Years">Years</option>
+              </select>
+            </div> -->
+          </div>
+          
+          <!-- Computation Type -->
+          <div class="mb-3">
+            <label class="form-label">Computation Type</label>
+            <select name="computationType" class="form-select" ngModel required>
+              <option value="" disabled selected>Select type</option>
+              <option *ngFor="let ct of computationTypes" [value]="ct">{{ ct }}</option>
+            </select>
+          </div>
+          
+          <br>
+          <strong>Account Details</strong>
+          <br>
+          
+          <!-- Accumulated Depreciation Account -->
+          <div class="mb-3">
+            <label class="form-label">Accumulated Depreciation Account</label>
+            <select name="accumulatedDepreciationAccount" class="form-select" ngModel required>
+              <option value="" disabled selected>Select an account</option>
+              <option *ngFor="let acc of allAccounts" [ngValue]="acc">{{ acc.accountName }}</option>
+            </select>
+          </div>
+          
+          <!-- Depreciation Expense Account -->
+          <div class="mb-3">
+            <label class="form-label">Depreciation Expense Account</label>
+            <select name="depreciationExpenseAccount" class="form-select" ngModel required>
+              <option value="" disabled selected>Select an account</option>
+              <option *ngFor="let acc of allAccounts" [ngValue]="acc">{{ acc.accountName }}</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="assetTypeForm.invalid">Save</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+       
+      </form>
+    </div>
+    <div *ngIf="showSuccessAlert" class="alert alert-secondary" role="alert">
+      <div class="container">
+        <h3>Asset Type added successfully!</h3>
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

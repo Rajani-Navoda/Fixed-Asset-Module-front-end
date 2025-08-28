@@ -104,5 +104,17 @@
         </div>
       </form>
     </div>
+
+    <div *ngIf="showSuccessAlert" class="alert alert-secondary" role="alert">
+      <div class="container">
+        <h3>Account added successfully!</h3>
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+
   </div>
 </div>
+
+
