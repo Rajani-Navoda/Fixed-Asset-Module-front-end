@@ -3,30 +3,34 @@
 
   <button class="btn btn-primary mb-3" (click)="openCreateModal()">Create New Asset Type</button>
 
-  <!-- <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Type Name</th>
-        <th>Depreciation Method</th>
-        <th>Depreciation Frequency</th>
-        <th>Asset Life</th>
-        <th>Computation Type</th>
-        <th>Accumulated Depreciation Account</th>
-        <th>Depreciation Expense Account</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let assetType of fixedAssetTypes">
-        <td>{{ assetType.faTypeName }}</td>
-        <td>{{ depreciationMethodLabels[assetType.depreciationMethod] || assetType.depreciationMethod }}</td>
-        <td>{{ assetType.depreciationFrequency }}</td>
-        <td>{{ assetType.assetLife }}</td>
-        <td>{{ assetType.computationType }}</td>
-        <td>{{ assetType.accumulatedDepreciationAccount?.name }}</td>
-        <td>{{ assetType.depreciationExpenseAccount?.name }}</td>
-      </tr>
-    </tbody>
-  </table> -->
+ <table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ASSET TYPE ID</th>
+      <th>ASSET TYPE NAME</th>
+      <th>DEPRECIATION METHOD</th>
+      <th>DEPRECIATION FREQUENCY</th>
+      <th>ASSET LIFE</th>
+      <th>COMPUTATION TYPE</th>
+      <th>ACCUMULATED DEPRECIATION ACCOUNT</th>
+      <th>DEPRECIATION EXPENSE ACCOUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let asset of assetTypes">
+      <td>{{ asset.faTypeId }}</td>
+      <td>{{ asset.faTypeName }}</td>
+      <td>{{ asset.depreciationMethod }}</td>
+      <td>{{ asset.depreciationFrequency }}</td>
+      <td>{{ asset.assetLife }}</td>
+      <td>{{ asset.computationType }}</td>
+      <td>{{ asset.accumulatedDepreciationAccount?.accountName }}</td>
+      <td>{{ asset.depreciationExpenseAccount?.accountName }}</td>
+
+    </tr>
+  </tbody>
+</table>
+
 
   <!-- Include the Fixed Asset Type Modal component -->
    <!-- <app-fixed-asset-type-modal></app-fixed-asset-type-modal> -->

@@ -13,6 +13,7 @@ export interface FixedAssetTypes{
     computationType: ComputationType;
     accumulatedDepreciationAccount: Accounts;
     depreciationExpenseAccount: Accounts;
+    
 }
 
 

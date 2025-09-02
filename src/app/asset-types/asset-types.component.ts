@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssetTypeService } from '../_services/asset-type.service';
 
 declare var bootstrap: any;
 
@@ -9,9 +10,14 @@ declare var bootstrap: any;
 })
 export class AssetTypesComponent implements OnInit {
 
-  constructor() { }
+    assetTypes: any[] = [];
+
+
+  constructor( private assetTypeService: AssetTypeService) { }
 
   ngOnInit(): void {
+    this.loadAssetTypes();
+
   }
 
   openCreateModal() {
@@ -20,6 +26,18 @@ export class AssetTypesComponent implements OnInit {
       const modal = new bootstrap.Modal(modalElement);
       modal.show();
     }
+  }
+
+    loadAssetTypes(): void {
+    this.assetTypeService.getAllAssetTypes().subscribe({
+      next: (data: any) => {
+        this.assetTypes = data;
+        console.log('Asset types loaded:', this.assetTypes);
+      },
+      error: (err) => {
+        console.error('Error while fetching asset types:', err);
+      }
+    });
   }
 
 }

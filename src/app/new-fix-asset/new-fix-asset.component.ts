@@ -45,21 +45,4 @@ export class NewFixAssetComponent implements OnInit {
   }
 
 
-
-  // openAssetNumberPreferences() {
-  //   const dialogRef = this.dialog.open(AssetNumberPreferencesDialogComponent, {
-  //     width: '500px',
-  //     data: {
-  //       prefix: 'FA-',
-  //       nextNumber: '07878',
-  //       autoGenerate: true // or false, depending on your logic
-  //     }
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result && result.fixedAssetNumber) {
-  //       // this.fixedAssetNumber = result.fixedAssetNumber;
-  //     }
-  //   });
-  // }
 }

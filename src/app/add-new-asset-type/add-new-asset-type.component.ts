@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { AccountsService } from '../_services/accounts.service';
 import { Accounts } from '../_models/Accounts';
 import { NgForm } from '@angular/forms';
+import { AssetTypeService } from '../_services/asset-type.service';
 
 @Component({
   selector: 'app-add-new-asset-type',
@@ -26,7 +27,8 @@ export class AddNewAssetTypeComponent implements OnInit {
 
   allAccounts: Accounts[] = [];
 
-  constructor(private httpClient: HttpClient, private accountService: AccountsService) { }
+  constructor(private httpClient: HttpClient, private accountService: AccountsService, 
+    private assetTypeService: AssetTypeService) { }
 
   ngOnInit(): void {
     this.loadAllAccounts();
@@ -48,6 +50,22 @@ export class AddNewAssetTypeComponent implements OnInit {
     onSaveAssetType(assetTypeForm: NgForm) {
     const assetTypeData = assetTypeForm.value;
     // console.log('Asset Type Data:', assetTypeData);
+
+      this.assetTypeService.createAssetType(assetTypeData).subscribe({
+      next: (response) => {
+        console.log('Asset Type created successfully:', response);
+
+        this.alertClass = 'alert-success';
+        this.showSuccessAlert = true;
+
+        setTimeout(() => {
+ 
+        }, 3000);
+      },
+      error: (error) => {
+        console.error('Error creating account:', error);
+      }
+    });
   }
 
 
@@ -57,3 +75,6 @@ export class AddNewAssetTypeComponent implements OnInit {
 
 
 }
+
+
+

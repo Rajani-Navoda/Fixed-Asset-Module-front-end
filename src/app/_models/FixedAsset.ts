@@ -3,6 +3,7 @@ import { DepreciationFrequency } from "./enums/DepreciationFrequency";
 import { ComputationType } from "./enums/ComputationType";
 import { Accounts } from "./Accounts";
 import { Status } from "./enums/Status";
+import { FixedAssetTypes } from "./FixedAssetTypes";
 
 export interface FixedAsset {
 
@@ -15,7 +16,7 @@ export interface FixedAsset {
   currentValue: number;
   disposalValue: number;
   description: string;
-  // fixedAssetTypes: FixedAssetTypes;
+  fixedAssetType: FixedAssetTypes;
   depreciationMethod: DepreciationMethod;
   depreciationFrequency: DepreciationFrequency;
   computationType: ComputationType;
